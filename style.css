@@ -1,0 +1,97 @@
+
+
+    /* Set Sansation as default for all text */
+    body {
+        font-family: "Sansation", sans-serif;
+        font-weight: 400;
+    }
+    
+    /* Headings will use Marcellus */
+    h1, h2, h3, h4, h5, h6 {
+        font-family: "Marcellus", serif;
+    }
+    
+    /* Font classes for specific needs */
+    .marcellus-regular {
+        font-family: "Marcellus", serif;
+    }
+    
+    .sansation-light {
+        font-weight: 300;
+    }
+    
+    .sansation-regular {
+        font-weight: 400;
+    }
+    
+    .sansation-bold {
+        font-weight: 700;
+    }
+    
+    .sansation-light-italic {
+        font-weight: 300;
+        font-style: italic;
+    }
+    
+    .sansation-italic {
+        font-style: italic;
+    }
+    
+    .sansation-bold-italic {
+        font-weight: 700;
+        font-style: italic;
+    }
+
+    /* Custom color palette */
+    .bg-primary {
+        background-color: #FAEDDB;
+    }
+
+    .bg-secondary {
+        background-color: #ebb625;
+    }
+
+    .bg-accent {
+        background-color: #D97706;
+    }
+
+    .bg-light {
+        background-color: #FAEDDB;
+    }
+
+    .bg-dark {
+        background-color: #121127;
+    }
+
+    .text-primary {
+        color: #1E3A8A;
+    }
+
+    .text-secondary {
+        color: #2563EB;
+    }
+
+    .text-accent {
+        color: #D97706;
+    }
+
+    .text-light {
+        color: #FAEDDB;
+    }
+
+    .text-dark {
+        color: #111827;
+    }
+
+    .border-accent {
+        border-color: #D97706;
+    }
+
+    /* Custom utility classes */
+    .hover-bg-accent:hover {
+        background-color: #B45309;
+    }
+
+    .hover-text-accent:hover {
+        color: #D97706;
+    }

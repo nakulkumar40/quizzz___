@@ -1,137 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz Hub - Your Ultimate Cricket Destination</title>
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <style>
-        /* Custom color palette */
-        .bg-primary {background-color: #FAEDDB; } /* Dark blue */
-        .bg-secondary { background-color: #ebca25; } /* Medium blue */
-        .bg-accent { background-color: #D97706; } /* Amber */
-        .bg-light { background-color: #FAEDDB; } /* Cream/off-white */
-        .bg-dark { background-color: #121127; } /* Dark gray */
-        
-        .text-primary { color: #1E3A8A; }
-        .text-secondary { color: #2563EB; }
-        .text-accent { color: #D97706; }
-        .text-light { color: #FAEDDB; }
-        .text-dark { color: #111827; }
-        
-        .border-accent { border-color: #D97706; }
-        
-        /* Custom utility classes */
-        .hover-bg-accent:hover { background-color: #B45309; } /* Darker amber */
-        .hover-text-accent:hover { color: #D97706; }
-    </style>
+
+    <!-- Google Fonts: Marcellus and Sansation -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Sansation:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+   
 </head>
+
+
 <body class="bg-light font-sans text-dark">
-   <!-- Navbar -->
-<nav class="bg-gradient-to-r from-[#FAEDDB] to-blue-700 text-gray-900 shadow-lg">
-    <div class="container mx-auto px-4 py-3">
-        <div class="flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <i class="fas fa-cricket text-2xl text-blue-900"></i>
-                <span class="text-xl font-bold">Quiz</span>
+    <nav class="bg-gray-900 text-white px-4 py-3 shadow-md flex items-center justify-between">
+        <div class="flex items-center gap-2">
+            <!-- Circular Image Logo -->
+            <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-gray-300">
+              <img 
+                src="https://c7.alamy.com/comp/2DE4J0N/quiz-logo-with-clock-concept-of-questionnaire-show-sing-quiz-button-question-competition-vector-stock-illustration-2DE4J0N.jpg" 
+                alt="Quiz Hub Logo"
+                class="w-full h-full object-cover"
+              />
             </div>
-
-            <!-- Mobile menu button -->
-            <div class="md:hidden">
-                <button id="mobile-menu-button" class="text-gray-900 focus:outline-none">
-                    <i class="fas fa-bars text-2xl"></i>
-                </button>
-            </div>
-
-            <!-- Desktop Menu -->
-            <div class="hidden md:flex space-x-6">
-                <a href="#home" class="hover:text-blue-800 transition">Home</a>
-                <a href="#about" class="hover:text-blue-800 transition">About</a>
-                <a href="#category" class="hover:text-blue-800 transition">Category</a>
-                <a href="#portfolio" class="hover:text-blue-800 transition">Portfolio</a>
-                <a href="#contact" class="hover:text-blue-800 transition">Contact</a>
-                <a href="#login-modal" class="login-btn bg-blue-800 hover:bg-blue-900 px-4 py-1 rounded-md text-white transition">Login</a>
-                <a href="#signup-modal" class="signup-btn bg-green-600 hover:bg-green-700 px-4 py-1 rounded-md text-white transition">SignUp</a>
-            </div>
+            <!-- Quiz Hub Text -->
+            <div class="text-xl font-bold">Quiz Hub</div>
+          </div>
+        <!-- Desktop Links -->
+        <div class="hidden md:flex gap-6 items-center">
+          <a href="#home" class="hover:text-yellow-300">Home</a>
+          <a href="#about" class="hover:text-yellow-300">About</a>
+          <a href="#category" class="hover:text-yellow-300">Category</a>
+          <a href="#portfolio" class="hover:text-yellow-300">Portfolio</a>
+          <a href="#contact" class="hover:text-yellow-300">Contact</a>
+      
+          <!-- Profile dropdown -->
+          <div class="relative">
+            <button id="profile-btn" class="w-9 h-9 bg-white text-blue-600 rounded-full flex items-center justify-center hover:ring-2 ring-white">
+              <i class="fas fa-user"></i>
+            </button>
+            <div id="dropdown-menu" class="absolute right-0 mt-2 bg-white text-black rounded shadow-lg hidden z-50 min-w-[140px]"></div>
+          </div>
         </div>
-
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="md:hidden hidden mt-2 pb-2">
-            <a href="#home" class="block py-1 hover:bg-blue-700 px-2 rounded">Home</a>
-            <a href="#about" class="block py-1 hover:bg-blue-700 px-2 rounded">About</a>
-            <a href="#category" class="block py-1 hover:bg-blue-700 px-2 rounded">Category</a>
-            <a href="#portfolio" class="block py-1 hover:bg-blue-700 px-2 rounded">Portfolio</a>
-            <a href="#contact" class="block py-1 hover:bg-blue-700 px-2 rounded">Contact</a>
-            <a href="#login-modal" class="login-btn block py-1 hover:bg-blue-700 px-2 rounded">Login</a>
-            <a href="#signup-modal" class="signup-btn block py-1 hover:bg-blue-700 px-2 rounded">Sign Up</a>
+      
+        <!-- Mobile menu button -->
+        <button id="mobile-menu-button" class="md:hidden text-white text-2xl">
+          <i class="fas fa-bars"></i>
+        </button>
+      </nav>
+      
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="md:hidden hidden bg-blue-500 text-white px-4 pb-3">
+        <a href="#home" class="block py-2 border-b border-blue-400">Home</a>
+        <a href="#about" class="block py-2 border-b border-blue-400">About</a>
+        <a href="#category" class="block py-2 border-b border-blue-400">Category</a>
+        <a href="#portfolio" class="block py-2 border-b border-blue-400">Portfolio</a>
+        <a href="#contact" class="block py-2 border-b border-blue-400">Contact</a>
+        <div id="mobile-auth-links" class="mt-2"></div>
+      </div>
+      
+      <!-- Login Modal -->
+      <div id="login-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-lg w-full max-w-md p-6 shadow-xl">
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="text-2xl font-bold">Login</h3>
+            <button id="close-login" class="text-gray-600 hover:text-black">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <form id="login-form" class="space-y-4">
+            <input type="email" placeholder="Email" required class="w-full border px-4 py-2 rounded">
+            <input type="password" placeholder="Password" required class="w-full border px-4 py-2 rounded">
+            <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">Login</button>
+            <p class="text-sm text-center">Don't have an account? <a href="#" id="show-signup" class="text-blue-600 hover:underline">Sign Up</a></p>
+          </form>
         </div>
-    </div>
-</nav>
-
-
+      </div>
+      
+      <!-- Signup Modal -->
+      <div id="signup-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-lg w-full max-w-md p-6 shadow-xl">
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="text-2xl font-bold">Sign Up</h3>
+            <button id="close-signup" class="text-gray-600 hover:text-black">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <form id="signup-form" class="space-y-4">
+            <input type="text" placeholder="Full Name" required class="w-full border px-4 py-2 rounded">
+            <input type="email" placeholder="Email" required class="w-full border px-4 py-2 rounded">
+            <input type="password" placeholder="Password" required class="w-full border px-4 py-2 rounded">
+            <input type="password" placeholder="Confirm Password" required class="w-full border px-4 py-2 rounded">
+            <button type="submit" class="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700">Sign Up</button>
+            <p class="text-sm text-center">Already have an account? <a href="#" id="show-login" class="text-blue-600 hover:underline">Login</a></p>
+          </form>
+        </div>
+      </div>
+      
     <!-- Hero Section -->
-    <section id="home" class="relative h-screen bg-light text-dark flex items-center">
-        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
-            <div class="md:w-1/2 mb-10 md:mb-0">
-                <h1 class="text-4xl md:text-5xl font-bold mb-4 text-primary">Quiz Hub</h1>
-                <p class="text-xl mb-6">Your ultimate destination for all things cricket - news, stocks, YouTube content, and quizzes!</p>
-                <div class="flex space-x-4">
-                    <a href="#signup-modal" class="signup-btn bg-accent hover-bg-accent px-6 py-2 rounded-md font-semibold text-light transition">Get Started</a>
-                    <a href="#category" class="bg-transparent border-2 border-primary hover:bg-primary hover:text-light px-6 py-2 rounded-md font-semibold transition">Explore</a>
+    <section id="home" class="relative h-screen bg-light text-dark flex items-center overflow-hidden">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center animate-fade-in-down">
+            <!-- Text Content -->
+            <div class="md:w-1/2 mb-10 md:mb-0 text-center md:text-left">
+                <h1 class="text-4xl md:text-3xl font-extrabold mb-4 text-primary tracking-wide animate-slide-in-left">
+                    <span class="block">Welcome to</span> Quiz Hub
+                </h1>
+                <p class="text-lg md:text-xl mb-6 font-medium leading-relaxed animate-fade-in">
+                    Your ultimate destination for all things cricket – news, stats, YouTube content, and quizzes!
+                </p>
+                <div class="flex justify-center md:justify-start space-x-4 animate-fade-in-up ">
+                    <a href="#signup-modal"
+                        class="signup-btn bg-accent hover:bg-accent/80 px-6 py-2 rounded-lg font-semibold  shadow-lg transition duration-300 ease-in-out bg-yellow-300">
+                        Get Started
+                    </a>
+                    <a href="#category"
+                        class="bg-transparent border-2 border-primary hover:bg-primary hover:text-light px-6 py-2 rounded-lg font-semibold transition duration-300 ease-in-out bg-yellow-300">
+                        Explore
+                    </a>
                 </div>
             </div>
-            <div class="md:w-1/2 flex justify-center">
-                <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
-                     alt="Cricket Match" 
-                     class="rounded-lg shadow-2xl max-w-full h-auto border-4 border-accent">
+
+            <!-- Hero Image -->
+            <div class="md:w-1/2 flex justify-center animate-slide-in-right">
+                <img src="https://spreadsheetweb.com/wp-content/uploads/2023/09/onlinequ-980x551.png.webp"
+                    alt="Cricket Match"
+                    class="rounded-2xl shadow-2xl max-w-md h-auto border-2 border-accent transition-transform duration-200 hover:scale-105">
             </div>
         </div>
     </section>
-   
+
+    <!-- category -->
     <section id="category" class="py-16 bg-light">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12 text-primary">Categories</h2>
-        
+            <h2 class="text-3xl font-bold text-center mb-12 text-primary underline">Categories</h2>
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Cricket Card -->
                 <div class="bg-white rounded-xl shadow hover:shadow-lg transition duration-300">
-                    <img src="/assest/cricket-262180_1280.jpg" 
-                         alt="Cricket Match" 
-                         class="rounded-t-xl w-full h-48 object-cover">
+                    <img src="https://cdn.pixabay.com/photo/2014/10/14/20/24/football-488714_1280.jpg"
+                        alt="Cricket Match" class="rounded-t-xl w-full h-48 object-cover">
                     <div class="p-4">
                         <h3 class="text-xl font-bold text-primary mb-2">Cricket</h3>
                         <p class="text-gray-700">Latest IPL, International matches, and updates.</p>
                     </div>
                 </div>
-        
+
                 <!-- News Card -->
                 <div class="bg-white rounded-xl shadow hover:shadow-lg transition duration-300">
-                    <img src="/assest/newspapers-4565916_1280.jpg" 
-                         alt="News" 
-                         class="rounded-t-xl w-full h-48 object-cover">
+                    <img src="https://cdn.pixabay.com/photo/2019/04/16/18/13/media-4132399_1280.jpg" alt="News"
+                        class="rounded-t-xl w-full h-48 object-cover">
                     <div class="p-4">
                         <h3 class="text-xl font-bold text-primary mb-2">News</h3>
                         <p class="text-gray-700">Get the latest breaking and sports news.</p>
                     </div>
                 </div>
-        
+
                 <!-- Stock Market Card -->
                 <div class="bg-white rounded-xl shadow hover:shadow-lg transition duration-300">
-                    <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
-                         alt="Stock Market" 
-                         class="rounded-t-xl w-full h-48 object-cover">
+                    <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                        alt="Stock Market" class="rounded-t-xl w-full h-48 object-cover">
                     <div class="p-4">
                         <h3 class="text-xl font-bold text-primary mb-2">Stock Market</h3>
                         <p class="text-gray-700">Track trends and investments related to cricket stocks.</p>
                     </div>
                 </div>
-        
+
                 <!-- YouTube Card -->
                 <div class="bg-white rounded-xl shadow hover:shadow-lg transition duration-300">
-                    <img src="https://images.unsplash.com/photo-1611162616475-46b635cb6868?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
-                         alt="YouTube" 
-                         class="rounded-t-xl w-full h-48 object-cover">
+                    <img src="https://images.unsplash.com/photo-1611162616475-46b635cb6868?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                        alt="YouTube" class="rounded-t-xl w-full h-48 object-cover">
                     <div class="p-4">
                         <h3 class="text-xl font-bold text-primary mb-2">YouTube</h3>
                         <p class="text-gray-700">Watch highlights, tutorials, and cricket videos.</p>
@@ -141,119 +189,151 @@
         </div>
     </section>
 
-  <!-- About Section -->
-<section id="about" class="w-full py-16 bg-white border-4 border-white shadow-md">
-    <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-12 text-primary">About</h2>
-        <div class="max-w-4xl mx-auto">
-            <p class="mb-4 text-gray-700">
-                Cricket Hub is the premier online destination for cricket enthusiasts worldwide. Our platform brings together the latest cricket news, insightful stock analysis for cricket-related investments, top YouTube cricket content, and engaging quizzes to test your cricket knowledge.
-            </p>
 
-            <h3 class="text-xl font-semibold mt-6 mb-3 text-primary">News</h3>
-            <p class="mb-4 text-gray-700">
-                We provide comprehensive coverage of all cricket formats - Test matches, ODIs, T20s, and domestic leagues like IPL, Big Bash, and more. Our team of experienced journalists and analysts work round the clock to bring you the latest updates, match reports, player interviews, and behind-the-scenes stories.
-            </p>
+    <!-- About Section -->
+    <section id="about" class="w-full py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-primary underline">About Quiz Hub</h2>
+            <div class="max-w-4xl mx-auto">
+                <p class="mb-6 text-gray-700 text-lg">
+                    Quiz Hub is the premier online destination for cricket enthusiasts worldwide. Our platform brings
+                    together the latest cricket news, insightful stock analysis for cricket-related investments, top
+                    YouTube cricket content, and engaging quizzes to test your cricket knowledge.
+                </p>
 
-            <h3 class="text-xl font-semibold mt-6 mb-3 text-primary">Stocks</h3>
-            <p class="mb-4 text-gray-700">
-                The cricket economy is booming, and we help you navigate the world of cricket-related investments. From analyzing the performance of cricket equipment manufacturers to tracking the valuation of IPL franchises, our stock experts provide data-driven insights to help you make informed investment decisions.
-            </p>
+                <div class="grid md:grid-cols-2 gap-8 mt-10">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-3 text-primary flex items-center">
+                            <i class="fas fa-newspaper mr-2"></i> News
+                        </h3>
+                        <p class="mb-4 text-gray-700">
+                            We provide comprehensive coverage of all cricket formats - Test matches, ODIs, T20s, and
+                            domestic leagues like IPL, Big Bash, and more. Our team of experienced journalists and
+                            analysts work round the clock to bring you the latest updates.
+                        </p>
+                    </div>
 
-            <h3 class="text-xl font-semibold mt-6 mb-3 text-primary">YouTube</h3>
-            <p class="mb-4 text-gray-700">
-                We curate the best cricket content from YouTube, bringing you match highlights, expert analysis, player vlogs, and classic match replays. Our platform helps you discover new cricket creators and provides a centralized hub for all your cricket video consumption.
-            </p>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-3 text-primary flex items-center">
+                            <i class="fas fa-chart-line mr-2"></i> Stocks
+                        </h3>
+                        <p class="mb-4 text-gray-700">
+                            The cricket economy is booming, and we help you navigate the world of cricket-related
+                            investments. From analyzing the performance of cricket equipment manufacturers to tracking
+                            the valuation of IPL franchises.
+                        </p>
+                    </div>
 
-            <h3 class="text-xl font-semibold mt-6 mb-3 text-primary">Quiz</h3>
-            <p class="mb-4 text-gray-700">
-                Test your cricket knowledge with our interactive quizzes. From identifying players by their statistics to guessing matches from scorecards, our quizzes cater to all levels of cricket fans. Compete with friends, track your progress, and earn badges as you climb the leaderboard.
-            </p>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-3 text-primary flex items-center">
+                            <i class="fab fa-youtube mr-2"></i> YouTube
+                        </h3>
+                        <p class="mb-4 text-gray-700">
+                            We curate the best cricket content from YouTube, bringing you match highlights, expert
+                            analysis, player vlogs, and classic match replays. Our platform helps you discover new
+                            cricket creators.
+                        </p>
+                    </div>
 
-            <p class="mt-6 text-gray-700">
-                At Cricket Hub, we're passionate about cricket and committed to providing the best experience for fans around the world. Whether you're a casual viewer or a hardcore statistician, there's something here for everyone who loves this beautiful game.
-            </p>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-3 text-primary flex items-center">
+                            <i class="fas fa-question-circle mr-2"></i> Quiz
+                        </h3>
+                        <p class="mb-4 text-gray-700">
+                            Test your cricket knowledge with our interactive quizzes. From identifying players by their
+                            statistics to guessing matches from scorecards, our quizzes cater to all levels of cricket
+                            fans.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+
 
 
     <!-- Portfolio Section -->
     <section id="portfolio" class="py-16 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12 text-primary">Portfolio</h2>
+            <h2 class="text-3xl font-bold text-center mb-12 text-primary underline">Portfolio</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Portfolio Item 1 -->
                 <div class="relative group overflow-hidden rounded-lg shadow-lg">
-                    <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
-                         alt="Cricket Bat Manufacturing" 
-                         class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-dark to-transparent opacity-0 group-hover:opacity-80 transition duration-500 flex items-end p-6">
+                    <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                        alt="Cricket Bat Manufacturing" 
+                        class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-dark to-transparent opacity-0 group-hover:opacity-80 transition duration-500 flex items-end p-6">
                         <div>
                             <h3 class="text-blue-700text-xl font-bold mb-1">stocks</h3>
                             <p class="text-gray-300">Analysis of top stock and their stock performance</p>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Portfolio Item 2 -->
                 <div class="relative group overflow-hidden rounded-lg shadow-lg">
-                    <img src="https://images.unsplash.com/photo-1611162616475-46b635cb6868?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
-                         alt="IPL Franchises" 
-                         class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-dark to-transparent opacity-0 group-hover:opacity-80 transition duration-500 flex items-end p-6">
+                    <img src="https://images.unsplash.com/photo-1611162616475-46b635cb6868?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                        alt="IPL Franchises"
+                        class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-dark to-transparent opacity-0 group-hover:opacity-80 transition duration-500 flex items-end p-6">
                         <div>
                             <h3 class="text-blue-700 text-xl font-bold mb-1">YouTube</h3>
                             <p class="text-gray-300">Valuation trends of YouTube years</p>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Portfolio Item 3 -->
                 <div class="relative group overflow-hidden rounded-lg shadow-lg">
-                    <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
-                         alt="Stadium Economics" 
-                         class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-dark to-transparent opacity-0 group-hover:opacity-80 transition duration-500 flex items-end p-6">
+                    <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                        alt="Stadium Economics"
+                        class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-dark to-transparent opacity-0 group-hover:opacity-80 transition duration-500 flex items-end p-6">
                         <div>
                             <h3 class="text-blue-700 text-xl font-bold mb-1">Stadium Economics</h3>
                             <p class="text-gray-300">Revenue models of international cricket stadiums</p>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Portfolio Item 4 -->
                 <div class="relative group overflow-hidden rounded-lg shadow-lg">
-                    <img src="/assest/newspapers-4565916_1280.jpg" 
-                         alt="Player Performance" 
-                         class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-dark to-transparent opacity-0 group-hover:opacity-80 transition duration-500 flex items-end p-6">
+                    <img src="https://cdn.pixabay.com/photo/2019/04/16/18/13/media-4132399_1280.jpg"
+                        alt="Player Performance"
+                        class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-dark to-transparent opacity-0 group-hover:opacity-80 transition duration-500 flex items-end p-6">
                         <div>
                             <h3 class="text-blue-700text-xl font-bold mb-1">News</h3>
                             <p class="text-gray-300">Statistical analysis of top international players</p>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Portfolio Item 5 -->
                 <div class="relative group overflow-hidden rounded-lg shadow-lg">
-                    <img src="/assest/stock.webp" 
-                         alt="Media Rights" 
-                         class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-dark to-transparent opacity-0 group-hover:opacity-80 transition duration-500 flex items-end p-6">
+                    <img src="https://cdn.pixabay.com/photo/2021/08/06/00/38/stock-trading-6525084_1280.jpg"
+                        alt="Media Rights"
+                        class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-dark to-transparent opacity-0 group-hover:opacity-80 transition duration-500 flex items-end p-6">
                         <div>
                             <h3 class="text-blue-700 text-xl font-bold mb-1">Media Rights</h3>
                             <p class="text-gray-300">Broadcasting rights valuation for major tournaments</p>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Portfolio Item 6 -->
                 <div class="relative group overflow-hidden rounded-lg shadow-lg">
-                    <img src="/assest/logo.webp" 
-                         alt="Cricket Technology" 
-                         class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-dark to-transparent opacity-0 group-hover:opacity-80 transition duration-500 flex items-end p-6">
+                    <img src="https://cdn.pixabay.com/photo/2015/04/15/21/06/cricket-724620_1280.jpg"
+                        alt="Cricket Technology"
+                        class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-dark to-transparent opacity-0 group-hover:opacity-80 transition duration-500 flex items-end p-6">
                         <div>
                             <h3 class="text-blue-900 text-xl font-bold mb-1">Cricket Technology</h3>
                             <p class="text-gray-300">Innovations in cricket equipment and their market impact</p>
@@ -263,83 +343,99 @@
             </div>
         </div>
     </section>
-  <!-- Contact Section -->
-<section id="contact" class="py-16 text-gray-800 bg-[#FAEDDB]">
-    <div class="container mx-auto px-4 ">
-        <h2 class="text-3xl font-bold text-center mb-12 text-gray-900">Contact Us</h2>
-        <div class="max-w-full mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
-            <div class="md:flex">
-                <!-- Left Column -->
-                <div class="md:w-1/2 bg-gray-200 text-gray-800 p-8">
-                    <h3 class="text-xl font-semibold mb-4">Get in Touch</h3>
-                    <p class="mb-6">Have questions about cricket news, stocks, or content? Reach out to our team of experts.</p>
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 text-gray-800 bg-[#FAEDDB]">
+        <div class="container mx-auto px-4 ">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-900 underline">Contact Us</h2>
+            <div class="max-w-full mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="md:flex">
+                    <!-- Left Column -->
+                    <div class="md:w-1/2 bg-gray-200 text-gray-800 p-8">
+                        <h3 class="text-xl font-semibold mb-4">Get in Touch</h3>
+                        <p class="mb-6">Have questions about cricket news, stocks, or content? Reach out to our team of
+                            experts.</p>
 
-                    <div class="mb-4 flex items-start">
-                        <i class="fas fa-map-marker-alt mt-1 mr-3 text-gray-600"></i>
-                        <div>
-                            <h4 class="font-semibold">Address</h4>
-                            <p>123 Cricket Avenue, Sports City, SC 12345</p>
+                        <div class="mb-4 flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-gray-600"></i>
+                            <div>
+                                <h4 class="font-semibold">Address</h4>
+                                <p>123 Cricket Avenue, Sports City, SC 12345</p>
+                            </div>
+                        </div>
+
+                        <div class="mb-4 flex items-start">
+                            <i class="fas fa-phone-alt mt-1 mr-3 text-gray-600"></i>
+                            <div>
+                                <h4 class="font-semibold">Phone</h4>
+                                <p>+1 (234) 567-8910</p>
+                            </div>
+                        </div>
+
+                        <div class="mb-4 flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-3 text-gray-600"></i>
+                            <div>
+                                <h4 class="font-semibold">Email</h4>
+                                <p>info@crickethub.com</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-8">
+                            <h4 class="font-semibold mb-2">Follow Us</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="text-gray-700 hover:text-gray-900"><i
+                                        class="fab fa-facebook-f text-xl"></i></a>
+                                <a href="#" class="text-gray-700 hover:text-gray-900"><i
+                                        class="fab fa-twitter text-xl"></i></a>
+                                <a href="#" class="text-gray-700 hover:text-gray-900"><i
+                                        class="fab fa-instagram text-xl"></i></a>
+                                <a href="#" class="text-gray-700 hover:text-gray-900"><i
+                                        class="fab fa-youtube text-xl"></i></a>
+                                <a href="#" class="text-gray-700 hover:text-gray-900"><i
+                                        class="fab fa-linkedin-in text-xl"></i></a>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="mb-4 flex items-start">
-                        <i class="fas fa-phone-alt mt-1 mr-3 text-gray-600"></i>
-                        <div>
-                            <h4 class="font-semibold">Phone</h4>
-                            <p>+1 (234) 567-8910</p>
-                        </div>
+                    <!-- Right Column: Form -->
+                    <div class="md:w-1/2 p-8">
+                        <form action="contact.php" method="POST">
+                            <div class="mb-4">
+                                <label for="name" class="block text-gray-700 mb-2">Name</label>
+                                <input type="text" id="name" name="name"
+                                    class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"
+                                    required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="email" class="block text-gray-700 mb-2">Email</label>
+                                <input type="email" id="email" name="email"
+                                    class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"
+                                    required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="subject" class="block text-gray-700 mb-2">Subject</label>
+                                <input type="text" id="subject" name="subject"
+                                    class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"
+                                    required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="message" class="block text-gray-700 mb-2">Message</label>
+                                <textarea id="message" name="message" rows="4"
+                                    class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"
+                                    required></textarea>
+                            </div>
+
+                            <button type="submit"
+                                class="bg-gray-700 hover:bg-gray-900 text-white px-6 py-2 rounded-md font-semibold transition">Send
+                                Message</button>
+                        </form>
                     </div>
-
-                    <div class="mb-4 flex items-start">
-                        <i class="fas fa-envelope mt-1 mr-3 text-gray-600"></i>
-                        <div>
-                            <h4 class="font-semibold">Email</h4>
-                            <p>info@crickethub.com</p>
-                        </div>
-                    </div>
-
-                    <div class="mt-8">
-                        <h4 class="font-semibold mb-2">Follow Us</h4>
-                        <div class="flex space-x-4">
-                            <a href="#" class="text-gray-700 hover:text-gray-900"><i class="fab fa-facebook-f text-xl"></i></a>
-                            <a href="#" class="text-gray-700 hover:text-gray-900"><i class="fab fa-twitter text-xl"></i></a>
-                            <a href="#" class="text-gray-700 hover:text-gray-900"><i class="fab fa-instagram text-xl"></i></a>
-                            <a href="#" class="text-gray-700 hover:text-gray-900"><i class="fab fa-youtube text-xl"></i></a>
-                            <a href="#" class="text-gray-700 hover:text-gray-900"><i class="fab fa-linkedin-in text-xl"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right Column: Form -->
-                <div class="md:w-1/2 p-8">
-                    <form  action="contact.php" method="POST" >
-                        <div class="mb-4">
-                            <label for="name" class="block text-gray-700 mb-2">Name</label>
-                            <input type="text" id="name" name="name" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400" required>
-                        </div>
-
-                        <div class="mb-4">
-                            <label for="email" class="block text-gray-700 mb-2">Email</label>
-                            <input type="email" id="email" name="email" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400" required>
-                        </div>
-
-                        <div class="mb-4">
-                            <label for="subject" class="block text-gray-700 mb-2">Subject</label>
-                            <input type="text" id="subject" name="subject" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400" required>
-                        </div>
-
-                        <div class="mb-4">
-                            <label for="message" class="block text-gray-700 mb-2">Message</label>
-                            <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400" required></textarea>
-                        </div>
-
-                        <button type="submit" class="bg-gray-700 hover:bg-gray-900 text-white px-6 py-2 rounded-md font-semibold transition">Send Message</button>
-                    </form>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
 
     <!-- Login/Signup Modal -->
@@ -352,37 +448,44 @@
                         <i class="fas fa-times"></i>
                     </button>
                 </div>
-                
+
                 <form id="login-form" class="space-y-4">
                     <div>
                         <label for="login-email" class="block text-gray-700 mb-1">Email</label>
-                        <input type="email" id="login-email" name="email" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-accent" required>
+                        <input type="email" id="login-email" name="email"
+                            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
+                            required>
                     </div>
-                    
+
                     <div>
                         <label for="login-password" class="block text-gray-700 mb-1">Password</label>
-                        <input type="password" id="login-password" name="password" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-accent" required>
+                        <input type="password" id="login-password" name="password"
+                            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
+                            required>
                     </div>
-                    
+
                     <div class="flex items-center justify-between">
                         <div class="flex items-center">
-                            <input type="checkbox" id="remember" name="remember" class="h-4 w-4 text-accent focus:ring-accent border-gray-300 rounded">
+                            <input type="checkbox" id="remember" name="remember"
+                                class="h-4 w-4 text-accent focus:ring-accent border-gray-300 rounded">
                             <label for="remember" class="ml-2 block text-sm text-gray-700">Remember me</label>
                         </div>
-                        
+
                         <a href="#" class="text-sm text-primary hover:text-secondary">Forgot password?</a>
                     </div>
-                    
-                    <button type="submit" class="w-full bg-accent hover-bg-accent text-light py-2 rounded-md font-semibold transition">Login</button>
-                    
+
+                    <button type="submit"
+                        class="w-full bg-accent hover-bg-accent text-light py-2 rounded-md font-semibold transition">Login</button>
+
                     <div class="text-center text-sm text-gray-600">
-                        Don't have an account? <a href="#signup-modal" id="show-signup" class="text-primary hover:text-secondary font-semibold">Sign up</a>
+                        Don't have an account? <a href="#signup-modal" id="show-signup"
+                            class="text-primary hover:text-secondary font-semibold">Sign up</a>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-    
+
     <div id="signup-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
         <div class="bg-white rounded-lg shadow-xl w-full max-w-md">
             <div class="p-6">
@@ -392,47 +495,60 @@
                         <i class="fas fa-times"></i>
                     </button>
                 </div>
-                
+
                 <form action="signup.php" method="POST" class="space-y-4">
                     <!-- Full Name -->
                     <div>
                         <label for="signup-name" class="block text-gray-700 mb-1">Full Name</label>
-                        <input type="text" id="signup-name" name="name" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-accent" required>
+                        <input type="text" id="signup-name" name="name"
+                            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
+                            required>
                     </div>
-                    
+
                     <!-- Email -->
                     <div>
                         <label for="signup-email" class="block text-gray-700 mb-1">Email</label>
-                        <input type="email" id="signup-email" name="email" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-accent" required>
+                        <input type="email" id="signup-email" name="email"
+                            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
+                            required>
                     </div>
-                    
+
                     <!-- Password -->
                     <div>
                         <label for="signup-password" class="block text-gray-700 mb-1">Password</label>
-                        <input type="password" id="signup-password" name="password" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-accent" required>
+                        <input type="password" id="signup-password" name="password"
+                            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
+                            required>
                     </div>
-                    
+
                     <!-- Confirm Password -->
                     <div>
                         <label for="signup-confirm" class="block text-gray-700 mb-1">Confirm Password</label>
-                        <input type="password" id="signup-confirm" name="confirm_password" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-accent" required>
+                        <input type="password" id="signup-confirm" name="confirm_password"
+                            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
+                            required>
                     </div>
-                    
+
                     <!-- Terms and Conditions -->
                     <div class="flex items-center">
-                        <input type="checkbox" id="terms" name="terms" class="h-4 w-4 text-accent focus:ring-accent border-gray-300 rounded" required>
-                        <label for="terms" class="ml-2 block text-sm text-gray-700">I agree to the <a href="#" class="text-primary hover:text-secondary">Terms and Conditions</a></label>
+                        <input type="checkbox" id="terms" name="terms"
+                            class="h-4 w-4 text-accent focus:ring-accent border-gray-300 rounded" required>
+                        <label for="terms" class="ml-2 block text-sm text-gray-700">I agree to the <a href="#"
+                                class="text-primary hover:text-secondary">Terms and Conditions</a></label>
                     </div>
-                    
+
                     <!-- Submit Button -->
-                    <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-light py-2 rounded-md font-semibold transition">Sign Up</button>
-                    
+                    <button type="submit"
+                        class="w-full bg-green-600 hover:bg-green-700 text-light py-2 rounded-md font-semibold transition">Sign
+                        Up</button>
+
                     <!-- Login Link -->
                     <div class="text-center text-sm text-gray-600">
-                        Already have an account? <a href="#login-modal" id="show-login" class="text-primary hover:text-secondary font-semibold">Login</a>
+                        Already have an account? <a href="#login-modal" id="show-login"
+                            class="text-primary hover:text-secondary font-semibold">Login</a>
                     </div>
                 </form>
-                
+
             </div>
         </div>
     </div>
@@ -443,7 +559,8 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
                 <div>
                     <h3 class="text-xl font-bold mb-4 text-accent">Quiz</h3>
-                    <p class="text-gray-400">Your ultimate destination for cricket news, stocks, YouTube content, and quizzes.</p>
+                    <p class="text-gray-400">Your ultimate destination for cricket news, stocks, YouTube content, and
+                        quizzes.</p>
                     <div class="mt-4 flex space-x-4">
                         <a href="#" class="text-gray-400 hover:text-light"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" class="text-gray-400 hover:text-light"><i class="fab fa-twitter"></i></a>
@@ -451,7 +568,7 @@
                         <a href="#" class="text-gray-400 hover:text-light"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
-                
+
                 <div>
                     <h4 class="text-lg font-semibold mb-4 text-accent">Quick Links</h4>
                     <ul class="space-y-2">
@@ -462,9 +579,9 @@
                         <li><a href="#contact" class="text-gray-400 hover:text-light transition">Contact</a></li>
                     </ul>
                 </div>
-                
+
                 <div>
-                    <h4 class="text-lg font-semibold mb-4 text-accent">Categories</h4>
+                    <h4 class="text-lg font-semibold mb-4 text-accent underline">Categories</h4>
                     <ul class="space-y-2">
                         <li><a href="#" class="text-gray-400 hover:text-light transition"> News</a></li>
                         <li><a href="#" class="text-gray-400 hover:text-light transition">Stocks</a></li>
@@ -472,19 +589,22 @@
                         <li><a href="#" class="text-gray-400 hover:text-light transition">cricket</a></li>
                     </ul>
                 </div>
-                
+
                 <div>
                     <h4 class="text-lg font-semibold mb-4 text-accent">Newsletter</h4>
-                    <p class="text-gray-400 mb-4">Subscribe to get the latest cricket updates straight to your inbox.</p>
+                    <p class="text-gray-400 mb-4">Subscribe to get the latest cricket updates straight to your inbox.
+                    </p>
                     <form id="newsletter-form" class="flex">
-                        <input type="email" placeholder="Your email" class="px-4 py-2 rounded-l-md w-full text-dark focus:outline-none" required>
-                        <button type="submit" class="bg-accent hover-bg-accent px-4 py-2 rounded-r-md text-light font-semibold transition">
+                        <input type="email" placeholder="Your email"
+                            class="px-4 py-2 rounded-l-md w-full text-dark focus:outline-none" required>
+                        <button type="submit"
+                            class="bg-accent hover-bg-accent px-4 py-2 rounded-r-md text-light font-semibold transition">
                             <i class="fas fa-paper-plane"></i>
                         </button>
                     </form>
                 </div>
             </div>
-            
+
             <div class="border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center">
                 <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2023 Cricket Hub. All rights reserved.</p>
                 <div class="flex space-x-6">
@@ -495,102 +615,8 @@
             </div>
         </div>
     </footer>
-
-    <script>
-        // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-        
-        // Modal functionality
-        const loginModal = document.getElementById('login-modal');
-        const signupModal = document.getElementById('signup-modal');
-        const closeLogin = document.getElementById('close-login');
-        const closeSignup = document.getElementById('close-signup');
-        const showSignup = document.getElementById('show-signup');
-        const showLogin = document.getElementById('show-login');
-        const loginButtons = document.querySelectorAll('.login-btn');
-        const signupButtons = document.querySelectorAll('.signup-btn');
-        
-        // Show login modal
-        loginButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.preventDefault();
-                loginModal.classList.remove('hidden');
-                signupModal.classList.add('hidden');
-            });
-        });
-        
-        // Show signup modal
-        signupButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.preventDefault();
-                signupModal.classList.remove('hidden');
-                loginModal.classList.add('hidden');
-            });
-        });
-        
-        // Close modals
-        closeLogin.addEventListener('click', () => {
-            loginModal.classList.add('hidden');
-        });
-        
-        closeSignup.addEventListener('click', () => {
-            signupModal.classList.add('hidden');
-        });
-            
-        // Switch between modals
-        showSignup.addEventListener('click', (e) => {
-            e.preventDefault();
-            loginModal.classList.add('hidden');
-            signupModal.classList.remove('hidden');
-        });
-        
-        showLogin.addEventListener('click', (e) => {
-            e.preventDefault();
-            signupModal.classList.add('hidden');
-            loginModal.classList.remove('hidden');
-        });
-        
-        // Close modals when clicking outside
-        window.addEventListener('click', (e) => {
-            if (e.target === loginModal) {
-                loginModal.classList.add('hidden');
-            }
-            if (e.target === signupModal) {
-                signupModal.classList.add('hidden');
-            }
-        });
-        
-        // // Form submissions
-        // document.getElementById('contact-form').addEventListener('submit', (e) => {
-        //     e.preventDefault();
-        //     alert('Thank you for your message! We will get back to you soon.');
-        //     e.target.reset();
-        // });
-        
-        document.getElementById('login-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Login successful!');
-            loginModal.classList.add('hidden');
-            e.target.reset();
-        });
-        
-        document.getElementById('signup-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Account created successfully!');
-            signupModal.classList.add('hidden');
-            e.target.reset();
-        });
-        
-        document.getElementById('newsletter-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Thanks for subscribing to our newsletter!');
-            e.target.reset();
-        });
-    </script>
+    
+    <script src="script.js"></script>  
 </body>
+
 </html>

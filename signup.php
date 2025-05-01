@@ -3,7 +3,7 @@
 $host = "localhost";
 $user = "root";
 $password = "";
-$database = "signup_db";
+$database = "contact_db";
 
 // Connect to the database
 $conn = new mysqli($host, $user, $password, $database);
